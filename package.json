@@ -1,0 +1,29 @@
+{
+  "name": "claude-flow-template-zh",
+  "version": "1.0.0",
+  "description": "Claude Flow 中文模板仓库 - 基于 SPARC 方法论的开发工作流模板",
+  "main": "index.js",
+  "scripts": {
+    "apply": "./scripts/apply-template.sh",
+    "sync": "./scripts/sync-upstream.sh",
+    "migrate": "./scripts/migrate-claude-flow.sh"
+  },
+  "keywords": [
+    "claude-flow",
+    "sparc",
+    "template",
+    "workflow",
+    "chinese",
+    "development"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/claude-flow-template-zh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/claude-flow-template-zh/issues"
+  },
+  "homepage": "https://github.com/yourusername/claude-flow-template-zh#readme"
+}
