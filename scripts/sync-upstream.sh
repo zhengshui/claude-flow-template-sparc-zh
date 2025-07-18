@@ -92,6 +92,18 @@ EOF
     log_success "已创建版本 v$version"
 }
 
+# 检查文件是否为已汉化文档
+is_chinese_doc() {
+    local file="$1"
+    if [[ "$file" == *.md ]]; then
+        # 检查是否包含中文字符
+        if grep -q "[\u4e00-\u9fa5]" "$file" 2>/dev/null; then
+            return 0  # 是中文文档
+        fi
+    fi
+    return 1  # 不是中文文档
+}
+
 # 更新当前模板
 update_current_template() {
     local source_dir="$1"
@@ -104,16 +116,41 @@ update_current_template() {
         log_info "已备份当前模板"
     fi
     
-    # 创建新的基础模板
+    # 创建新的基础模板目录
     mkdir -p "$CURRENT_TEMPLATE_DIR"
     
-    # 复制文件
+    # 复制配置文件（总是更新）
     [ -d "$source_dir/.claude" ] && cp -r "$source_dir/.claude" "$CURRENT_TEMPLATE_DIR/"
     [ -d "$source_dir/.roo" ] && cp -r "$source_dir/.roo" "$CURRENT_TEMPLATE_DIR/"
     [ -f "$source_dir/.roomodes" ] && cp "$source_dir/.roomodes" "$CURRENT_TEMPLATE_DIR/"
     
-    # 创建 README
-    cat > "$CURRENT_TEMPLATE_DIR/README.md" << EOF
+    # 复制可执行文件
+    [ -f "$source_dir/claude-flow" ] && cp "$source_dir/claude-flow" "$CURRENT_TEMPLATE_DIR/"
+    
+    # 保护已汉化的文档，只复制新的或英文文档
+    if [ -d "$source_dir" ]; then
+        find "$source_dir" -name "*.md" -type f | while read -r src_file; do
+            local rel_path="${src_file#$source_dir/}"
+            local dst_file="$CURRENT_TEMPLATE_DIR/$rel_path"
+            
+            # 如果目标文件存在且是中文文档，跳过复制
+            if [ -f "$dst_file" ] && is_chinese_doc "$dst_file"; then
+                log_info "跳过已汉化文档: $rel_path"
+                continue
+            fi
+            
+            # 创建目标目录
+            mkdir -p "$(dirname "$dst_file")"
+            
+            # 复制文件
+            cp "$src_file" "$dst_file"
+            log_info "已更新文档: $rel_path"
+        done
+    fi
+    
+    # 只在 README.md 不存在或不是中文版本时创建
+    if [ ! -f "$CURRENT_TEMPLATE_DIR/README.md" ] || ! is_chinese_doc "$CURRENT_TEMPLATE_DIR/README.md"; then
+        cat > "$CURRENT_TEMPLATE_DIR/README.md" << EOF
 # Claude Flow 基础模板
 
 这是最新版本的 Claude Flow 模板，包含了所有必要的配置文件。
@@ -129,8 +166,9 @@ chmod +x /path/to/your/project/claude-flow
 ## 更新时间
 $(date '+%Y-%m-%d %H:%M:%S')
 EOF
+    fi
     
-    log_success "已更新基础模板"
+    log_success "已更新基础模板（保护了已汉化文档）"
 }
 
 # 主函数

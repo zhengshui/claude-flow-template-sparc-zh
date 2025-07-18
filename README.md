@@ -14,7 +14,7 @@
 ### 方法 2: 直接复制
 ```bash
 # 克隆模板仓库
-git clone https://github.com/yourusername/claude-flow-template-zh.git
+git clone https://github.com/zhengshui/claude-flow-template-zh.git
 cd claude-flow-template-zh
 
 # 复制基础模板到你的项目
@@ -24,10 +24,7 @@ cd claude-flow-template-zh
 ### 方法 3: 手动安装
 ```bash
 # 复制到你的项目目录
-cp -r templates/basic/.claude /path/to/your/project/
-cp -r templates/basic/.roo /path/to/your/project/
-cp templates/basic/.roomodes /path/to/your/project/
-cp templates/basic/claude-flow /path/to/your/project/
+cp -r templates/basic/* /path/to/your/project/
 chmod +x /path/to/your/project/claude-flow
 ```
 
@@ -176,7 +173,7 @@ vim templates/basic/.roo/workflows/my-workflow.json
 
 ## 📞 联系方式
 
-- 问题反馈: [GitHub Issues](https://github.com/yourusername/claude-flow-template-zh/issues)
-- 功能建议: [GitHub Discussions](https://github.com/yourusername/claude-flow-template-zh/discussions)
+- 问题反馈: [GitHub Issues](https://github.com/zhengshui/claude-flow-template-zh/issues)
+- 功能建议: [GitHub Discussions](https://github.com/zhengshui/claude-flow-template-zh/discussions)
 
 让我们一起构建更好的中文开发工具生态！🚀

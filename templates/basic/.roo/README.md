@@ -1,56 +1,56 @@
-# .roo Directory - SPARC Development Environment
+# .roo 目录 - SPARC 开发环境
 
-This directory contains the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) development environment configuration and templates.
+此目录包含 SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) 开发环境配置和模板。
 
-## Directory Structure
+## 目录结构
 
 ```
 .roo/
-├── README.md           # This file
-├── templates/          # Template files for common patterns
-├── workflows/          # Predefined SPARC workflows
-│   └── basic-tdd.json  # Basic TDD workflow
-├── modes/              # Custom mode definitions (optional)
-└── configs/            # Configuration files
+├── README.md           # 此文件
+├── templates/          # 通用模式模板文件
+├── workflows/          # 预定义 SPARC 工作流
+│   └── basic-tdd.json  # 基础 TDD 工作流
+├── modes/              # 自定义模式定义（可选）
+└── configs/            # 配置文件
 ```
 
-## SPARC Methodology
+## SPARC 方法论
 
-SPARC is a systematic approach to software development:
+SPARC 是一种系统化的软件开发方法：
 
-1. **Specification**: Define clear requirements and constraints
-2. **Pseudocode**: Create detailed logic flows and algorithms  
-3. **Architecture**: Design system structure and components
-4. **Refinement**: Implement, test, and optimize using TDD
-5. **Completion**: Integrate, document, and validate
+1. **Specification（规范）**: 定义清晰的需求和约束
+2. **Pseudocode（伪代码）**: 创建详细的逻辑流程和算法
+3. **Architecture（架构）**: 设计系统结构和组件
+4. **Refinement（精炼）**: 使用 TDD 实现、测试和优化
+5. **Completion（完成）**: 集成、文档化和验证
 
-## Usage with Claude-Flow
+## 与 Claude-Flow 的使用
 
-Use the claude-flow SPARC commands to leverage this environment:
+使用 claude-flow SPARC 命令来利用此环境：
 
 ```bash
-# List available modes
+# 列出可用模式
 claude-flow sparc modes
 
-# Run specific mode
+# 运行特定模式
 claude-flow sparc run code "implement user authentication"
 
-# Execute full TDD workflow  
+# 执行完整 TDD 工作流
 claude-flow sparc tdd "payment processing system"
 
-# Use custom workflow
+# 使用自定义工作流
 claude-flow sparc workflow .roo/workflows/basic-tdd.json
 ```
 
-## Configuration
+## 配置
 
-The main configuration is in `.roomodes` at the project root. This directory provides additional templates and workflows to support the SPARC development process.
+主要配置位于项目根目录的 `.roomodes` 文件中。此目录提供额外的模板和工作流来支持 SPARC 开发过程。
 
-## Customization
+## 自定义
 
-You can customize this environment by:
-- Adding new workflow templates to `workflows/`
-- Creating mode-specific templates in `templates/`
-- Adding project-specific configurations in `configs/`
+您可以通过以下方式自定义此环境：
+- 在 `workflows/` 中添加新的工作流模板
+- 在 `templates/` 中创建模式特定的模板
+- 在 `configs/` 中添加项目特定的配置
 
-For more information, see: https://github.com/ruvnet/claude-code-flow/docs/sparc.md
+更多信息请参考：https://github.com/ruvnet/claude-code-flow/docs/sparc.md
