@@ -1,19 +1,19 @@
-# Development Swarm Strategy
+# Development Swarm 策略
 
-## Purpose
-Coordinated development through specialized agent teams.
+## 目的
+通过专业智能体团队进行协调开发。
 
-## Activation
+## 激活方式
 `./claude-flow swarm "build feature X" --strategy development`
 
-## Agent Roles
-- Architect: Designs system structure
-- Frontend Developer: Implements UI
-- Backend Developer: Creates APIs
-- Database Specialist: Manages data layer
-- Integration Expert: Connects components
+## 智能体角色
+- Architect: 设计系统结构
+- Frontend Developer: 实现用户界面
+- Backend Developer: 创建 API
+- Database Specialist: 管理数据层
+- Integration Expert: 连接组件
 
-## Best Practices
-- Use hierarchical mode for large projects
-- Enable parallel execution
-- Implement continuous testing
+## 最佳实践
+- 对大型项目使用分层模式
+- 启用并行执行
+- 实施持续测试
